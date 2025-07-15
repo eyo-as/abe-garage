@@ -26,8 +26,8 @@ app.use(sanitize.middleware);
 // Add the routes to the application as middleware
 app.use(router);
 // sample get
-app.get("/", (res, res) => {
-  res.send("working");
+app.get("/", (req, res) => {
+  res.send("Hello World!");
 });
 // Start the webserver
 app.listen(port, () => {
