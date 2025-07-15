@@ -25,6 +25,10 @@ app.use(express.json());
 app.use(sanitize.middleware);
 // Add the routes to the application as middleware
 app.use(router);
+// sample get
+app.get("/", (res, res) => {
+  res.send("working");
+});
 // Start the webserver
 app.listen(port, () => {
   console.log(`Server running on port: ${port}`);
