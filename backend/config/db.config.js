@@ -7,10 +7,19 @@ const dbConfig = {
   password: process.env.DB_PASS,
   user: process.env.DB_USER,
   host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
   database: process.env.DB_NAME,
 };
 // Create the connection pool
 const pool = mysql.createPool(dbConfig);
+pool
+  .getConnection()
+  .then(() => {
+    console.log("Connected to the database");
+  })
+  .catch((err) => {
+    console.error("Error connecting to the database:", err.message);
+  });
 // Prepare a function that will execute the SQL queries asynchronously
 async function query(sql, params) {
   const [rows, fields] = await pool.execute(sql, params);
